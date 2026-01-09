@@ -7033,6 +7033,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "react-native-taskly-v3@workspace:."
   dependencies:
+    "@expo/vector-icons": "npm:^15.0.3"
     "@types/react": "npm:~19.1.0"
     eslint: "npm:^9.0.0"
     eslint-config-expo: "npm:~10.0.0"
