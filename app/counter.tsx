@@ -8,7 +8,7 @@ export default function CounterScreen() {
     <View style={styles.container}>
       <TouchableOpacity onPress={() => router.navigate("/idea")}>
         <Text style={{ textAlign: "center", marginBottom: 18, fontSize: 24 }}>
-          Go to /idea
+          Go to /idea screen
         </Text>
       </TouchableOpacity>
       <Text style={styles.text}>Counter</Text>

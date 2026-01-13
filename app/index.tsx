@@ -10,7 +10,7 @@ export default function App() {
         href="/counter"
         style={{ textAlign: "center", marginBottom: 18, fontSize: 24 }}
       >
-        Go to /counter
+        Go to /counter screen
       </Link>
       <ShoppingListItem name="Coffee" />
       <ShoppingListItem name="Tea" isCompleted />
