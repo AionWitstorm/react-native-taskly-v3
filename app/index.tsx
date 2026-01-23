@@ -1,4 +1,5 @@
 // Animation is not working right now please fix in future
+import * as Haptics from "expo-haptics";
 import { useEffect, useState } from "react";
 import {
   FlatList,
@@ -59,12 +60,18 @@ export default function App() {
     const newShoppingList = shoppingList.filter((item) => item.id !== id);
     saveToStorage(storageKey, newShoppingList);
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     setShoppingList(newShoppingList);
   };
 
   const handleToggleComplete = (id: string) => {
     const newShoppingList = shoppingList.map((item) => {
       if (item.id === id) {
+        if (item.completedAtTimestamp) {
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+        } else {
+          Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+        }
         return {
           ...item,
           completedAtTimestamp: item.completedAtTimestamp
