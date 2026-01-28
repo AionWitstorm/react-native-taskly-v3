@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { ShoppingListItem } from "../components/ShoppingListItem";
 import { theme } from "../theme";
-import { getFromStorage, saveToStorage } from "./utils/storage";
+import { getFromStorage, saveToStorage } from "../utils/storage";
 
 const storageKey = "shopping-list";
 
