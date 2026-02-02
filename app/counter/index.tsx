@@ -1,7 +1,14 @@
 import { intervalToDuration, isBefore } from "date-fns";
 import * as Notifications from "expo-notifications";
 import { useEffect, useState } from "react";
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  ActivityIndicator,
+  Alert,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { TimeSegment } from "../../components/TimerSegment";
 import { theme } from "../../theme";
 import { registerForPushNotificationsAsync } from "../../utils/registerForPushNotificationsAsync";
@@ -23,10 +30,12 @@ type CountdownStatus = {
 };
 
 export default function CounterScreen() {
+  const [isLoading, setIsLoading] = useState(true);
   const [countdownState, setCountdownState] =
     useState<PersistedCountdownState>();
 
   const [status, setStatus] = useState<CountdownStatus>({
+
     isOverdue: false,
     distance: {},
   });
@@ -34,7 +43,8 @@ export default function CounterScreen() {
   useEffect(() => {
     const init = async () => {
       const value = await getFromStorage(countdownStorageKey);
-      setCountdownState(value);
+      setCountdownState(value)
+      setIsLoading(false)
     };
     init();
   }, []);
@@ -46,7 +56,9 @@ export default function CounterScreen() {
       const timestamp = lastCompletedAt
         ? lastCompletedAt + frequency
         : Date.now();
-
+        if(lastCompletedAt){
+          setIsLoading(false)
+        }
       const isOverdue = isBefore(timestamp, Date.now());
 
       const distance = intervalToDuration(
@@ -118,6 +130,14 @@ export default function CounterScreen() {
 
     await saveToStorage(countdownStorageKey, newCountdownState);
   };
+
+  if (isLoading) {
+    return (
+      <View style={styles.activityIndicatorContainer}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
 
   return (
     <View
@@ -197,5 +217,11 @@ const styles = StyleSheet.create({
   },
   whiteText: {
     color: theme.colorWhite,
+  },
+  activityIndicatorContainer: {
+    backgroundColor: theme.colorWhite,
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
   },
 });
