@@ -17,9 +17,9 @@ import { getFromStorage, saveToStorage } from "../../utils/storage";
 // 10 seconds in ms
 const frequency = 10 * 1000;
 
-const countdownStorageKey = "taskly-countdown";
+export const countdownStorageKey = "taskly-countdown";
 
-type PersistedCountdownState = {
+export type PersistedCountdownState = {
   currentNotificationId: string | undefined;
   completedAtTimestamps: number[];
 };
@@ -35,7 +35,6 @@ export default function CounterScreen() {
     useState<PersistedCountdownState>();
 
   const [status, setStatus] = useState<CountdownStatus>({
-
     isOverdue: false,
     distance: {},
   });
@@ -43,8 +42,8 @@ export default function CounterScreen() {
   useEffect(() => {
     const init = async () => {
       const value = await getFromStorage(countdownStorageKey);
-      setCountdownState(value)
-      setIsLoading(false)
+      setCountdownState(value);
+      setIsLoading(false);
     };
     init();
   }, []);
@@ -56,9 +55,9 @@ export default function CounterScreen() {
       const timestamp = lastCompletedAt
         ? lastCompletedAt + frequency
         : Date.now();
-        if(lastCompletedAt){
-          setIsLoading(false)
-        }
+      if (lastCompletedAt) {
+        setIsLoading(false);
+      }
       const isOverdue = isBefore(timestamp, Date.now());
 
       const distance = intervalToDuration(
