@@ -7843,6 +7843,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-confetti-cannon@npm:^1.5.2":
+  version: 1.5.2
+  resolution: "react-native-confetti-cannon@npm:1.5.2"
+  checksum: 10c0/da7655ed1ace6c63fb38efe21dd44f42cd7e9112a1d26875d17047f6301c3654765e8a779ad68fbf1b1404fc89d2dbeae80322a9be8ea2f54acf021acf794417
+  languageName: node
+  linkType: hard
+
 "react-native-is-edge-to-edge@npm:^1.1.6, react-native-is-edge-to-edge@npm:^1.2.1":
   version: 1.2.1
   resolution: "react-native-is-edge-to-edge@npm:1.2.1"
@@ -7900,6 +7907,7 @@ __metadata:
     prettier: "npm:^3.7.4"
     react: "npm:19.1.0"
     react-native: "npm:0.81.5"
+    react-native-confetti-cannon: "npm:^1.5.2"
     react-native-safe-area-context: "npm:~5.6.0"
     react-native-screens: "npm:~4.16.0"
     typescript: "npm:~5.9.2"
