@@ -33,6 +33,7 @@ export default function App() {
       const data = await getFromStorage(storageKey);
       if (data) {
         LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
         setShoppingList(data);
       }
     };
